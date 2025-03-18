@@ -1,0 +1,11 @@
+Blake Masters
+Lab 07
+CSC 466
+
+pageRank.py
+    Usage: python pageRank.py <filename> <dataset_type>
+    filename:
+        must be a valid filepath to one of the csvs
+    dataset_type:
+        must be one of the following:
+            valid_datasets = {"NCAA-FOOTBALL", "DOLPHINS", "LES-MISERABLES"}

@@ -3,6 +3,7 @@ import csv
 import re
 import networkx as nx
 import numpy as np
+import sys
 
 class GraphParser:
     def __init__(self, file_path, dataset_type):
@@ -109,8 +110,21 @@ class PageRank:
 
 if __name__ == "__main__":
 
-    filename = "data/NCAA_football.csv"
-    dataset_type = "NCAA-FOOTBALL"
+    if len(sys.argv) < 3:
+        print("Error: Missing required arguments.")
+        print("Usage: python pageRank.py <filename> <dataset_type>")
+        sys.exit(1)
+    filename = sys.argv[1]  
+    dataset_type = sys.argv[2]
+
+    valid_datasets = {"NCAA-FOOTBALL", "DOLPHINS", "LES-MISERABLES"}
+    if dataset_type not in valid_datasets:
+        print(f"Error: Invalid dataset type '{dataset_type}'. Must be one of: {', '.join(valid_datasets)}")
+        sys.exit(1)
+
+    print(f"Processing dataset '{dataset_type}' from file '{filename}'...")
+
+    
     start_read = time.time()
     parser = GraphParser(filename, dataset_type)
     edges = parser.parse_csv()
